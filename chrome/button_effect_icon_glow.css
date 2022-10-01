@@ -46,7 +46,7 @@ toolbarbutton.scrollbutton-up:not([disabled]):hover,
 toolbarbutton.scrollbutton-down:not([disabled]):hover,
 toolbarbutton#scrollbutton-up:not([disabled]):hover,
 toolbarbutton#scrollbutton-down:not([disabled]):hover{ 
-  filter: drop-shadow(0 0 2px var(--uc-icon-glow-secondary)) drop-shadow(0 0 1px var(--uc-icon-glow-primary))
+  filter: drop-shadow(0 0 10px var(--uc-icon-glow-secondary)) drop-shadow(0 0 2px var(--uc-icon-glow-primary))
 }
 
 /* Active states and close window button hover state */
@@ -69,5 +69,5 @@ toolbarbutton.scrollbutton-up:active,
 toolbarbutton.scrollbutton-down:active,
 toolbarbutton#scrollbutton-up:active,
 toolbarbutton#scrollbutton-down:active{ 
-  filter: drop-shadow(0 0 2px var(--uc-icon-glow-hover-secondary)) drop-shadow(0 0 1px var(--uc-icon-glow-hover-primary))
+  filter: drop-shadow(0 0 2px var(--uc-icon-glow-hover-secondary)) drop-shadow(0 0 2px var(--uc-icon-glow-hover-primary))
 }
