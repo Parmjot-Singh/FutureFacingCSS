@@ -1,2 +1,2 @@
 # userChrome
-My userChrome theme. I combined a bunch of themes around the internet into one.
+My userChrome theme. This is still a work in progress, and much of the code is just a placeholder.
