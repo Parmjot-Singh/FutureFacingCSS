@@ -1,0 +1,45 @@
+/* Animated tab gradient */
+/* Animation for the tab */
+@keyframes active-tab-anim {
+	0% {background-color: rgb(0, 255, 255);}
+	50% {background-color: rgb(200, 0, 255);}
+	100% {background-color: rgb(0, 255, 255);}
+}
+
+/* Animation for the bottom of the tab bar */
+@keyframes tab-bar-bottom-anim {
+	0% {border-bottom: 1px solid rgb(0, 255, 255);}
+	50% {border-bottom: 1px solid rgb(200, 0, 255);}
+	100% {border-bottom: 1px solid rgb(0, 255, 255);}
+}
+
+/* Get the active tab, from the tab stack, and add the animation to it */
+.tabbrowser-tab[selected="true"] .tab-stack {
+	animation: active-tab-anim 10s linear 1s infinite normal !important;
+	animation-fill-mode: backwards !important;
+	border-bottom: 1px solid black !important;
+}
+
+/* cut the shape of the tab to have a curved shape */
+.tab-stack, .tab-background { 
+	border-radius: var(--tab-border-radius) !important;
+}
+#TabsToolbar {
+	margin-top: 1px !important;
+	animation: tab-bar-bottom-anim 10s linear 1s infinite normal !important;
+	animation-fill-mode: backwards !important;
+}
+
+.tab-background {
+	margin-left: 1px !important; 
+	margin-right: 1px !important; 
+	margin-top: 1px !important;
+}
+
+:root {
+/* add margin to allow block to have line on top */
+/* comments to right of code is translated */
+	--tab-block-margin: 0px !important;                                                   		/* tab margins */
+	--margin-top: var(--tab-block-margin) !important;                                     		/* top margin*/
+	--tab-border-radius: 6px 6px 0 0 !important;
+}

@@ -1,14 +1,15 @@
 @import url("chrome/autohide_bookmarks_and_main_toolbars.css");
 @import url("chrome/button_effect_icon_glow.css");
-@import url("chrome/centered_tab_content.css")
-@import url("chrome/centered_tab_label.css")
+/*@import url("chrome/centered_tab_content.css")
+@import url("chrome/centered_tab_label.css")*/
 @import url("chrome/compact_proton.css");
 @import url("chrome/less_static_throbber.css");
 @import url("chrome/loading_indicator_bouncing_line.css");
 @import url("chrome/minimal_in-UI_scrollbars.css");
 @import url("chrome/minimal_text_fields.css");
-/*@import url("chrome/minimal_toolbarbuttons_v3.css");
-/* @import url("chrome/shrinking_pinned_tabs.css"); */
+/*@import url("chrome/minimal_toolbarbuttons_v3.css");*/
+/*@import url("chrome/shrinking_pinned_tabs.css"); */
+@import url("chrome/animated_tab_colours.css");
 
 #PersonalToolbar{
 /*bookmarks bar color - make the bar translucent */
