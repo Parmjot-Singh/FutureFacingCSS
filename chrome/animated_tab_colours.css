@@ -17,7 +17,9 @@
 .tabbrowser-tab[selected="true"] .tab-stack {
 	animation: active-tab-anim 10s linear 1s infinite normal !important;
 	animation-fill-mode: backwards !important;
+	/*
 	border-bottom: 1px solid black !important;
+	*/
 }
 
 /* cut the shape of the tab to have a curved shape */
