@@ -86,7 +86,6 @@
 	
 	body {
 		 background-color: #000000 !important;
-		 background: url("images/Animation_Of_Stars-25-fps-compress.gif") no-repeat fixed !important;
 		background-size: cover !important;
 		--newtab-background-color: #000000 !important;
 		--newtab-background-color-secondary: #101010 !important;
@@ -129,4 +128,12 @@
 /* prevent white flash during page load */
 @-moz-document url(chrome://browser/content/browser.xhtml) {
 	browser[type="content-primary"] {background: #000000 !important}
+}
+
+/* goofy stuff */
+
+.pip-wrapper[position="top"] {
+    top: 10px !important;
+    left: 25px !important;
+
 }

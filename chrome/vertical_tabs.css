@@ -1,0 +1,240 @@
+/* Hide main tabs toolbar */
+
+:root[tabsintitlebar]{
+  --uc-window-control-width: 138px; /* Space reserved for window controls */
+  //--uc-window-drag-space-width: 24px; /* Extra space reserved on both sides of the nav-bar to be able to drag the window */
+}
+
+#nav-bar{
+  border-inline: var(--uc-window-drag-space-width,0px) solid transparent;
+  border-inline-style: solid !important;
+  border-right-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-width,0px));
+  background: none !important;
+  padding-top: 0px !important;
+}
+
+:root{ --uc-toolbar-height: 32px; }
+
+:root:not([uidensity="compact"]){--uc-toolbar-height: 38px}
+
+:root {
+  --toolbar-field-focus-border-color: none !important;
+}
+
+#TabsToolbar{ visibility: collapse !important }
+
+:root:not([inFullscreen]) #nav-bar{
+  margin-top: calc(0px - var(--uc-toolbar-height));
+}
+
+#toolbar-menubar{
+  min-height:unset !important;
+  height:var(--uc-toolbar-height) !important;
+  position: relative;
+}
+
+#main-menubar{
+  -moz-box-flex: 1;
+  background-clip: padding-box;
+  border-right: 30px solid transparent;
+}
+
+#toolbar-menubar:not([inactive]){ z-index: 2 }
+#toolbar-menubar[inactive] > #menubar-items {
+  opacity: 0;
+  pointer-events: none;
+  margin-left: var(--uc-window-drag-space-width,0px)
+}
+
+.titlebar-placeholder {
+  border: none !important;
+}
+
+.titlebar-buttonbox-container .titlebar-button:hover {
+    background: none !important;
+}
+
+
+/** Changes in TST **/
+ 
+/* Sidebar min and max width removal */
+ 
+#sidebar {
+    max-width: none !important;
+    min-width: 0px !important;
+}
+ 
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] + #sidebar-splitter {
+    display: none !important;
+}
+ 
+/* Hide sidebar header, when using Tree Style Tab. */
+ 
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+    visibility: collapse;
+}
+ 
+/* Shrink sidebar until hovered, when using Tree Style Tab. */
+ 
+:root {
+    --thin-tab-width: 45px;
+    --wide-tab-width: 200px;
+}
+ 
+#sidebar-box:not([sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]) {
+    min-width: var(--wide-tab-width) !important;
+    max-width: none !important;
+}
+
+#sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] {
+    position: relative !important;
+    transition: all 200ms !important;
+    min-width: var(--thin-tab-width) !important;
+    max-width: var(--thin-tab-width) !important;
+	
+}
+
+#sidebar-box[sidebarcommand=treestyletab_piro_sakura_ne_jp-sidebar-action]:hover {
+    /*transition-delay: 200ms !important; hover delay for avoiding accidental expansion on mouse hover*/
+    transition: all 200ms !important;
+    min-width: var(--wide-tab-width) !important;
+    max-width: var(--wide-tab-width) !important;
+    margin-right: calc((var(--wide-tab-width) - var(--thin-tab-width)) * -1) !important;
+    z-index: 1;
+}
+
+#tabbar-container, #tabbar {
+	background-color: black !important;
+}
+
+/*END OF TREE STYLE TABS CODE*/
+
+/*showing thin nav-title-bar (title bar text in nav bar) only in maximized mode*/
+/* Disabled in fullscreen and restore down mode due to insufficient space & overlapping other elements*/
+@-moz-document url(chrome://browser/content/browser.xhtml){
+  :root[sizemode="maximized"] > head{
+    display: block;
+    position: fixed;
+    right: 220px;	/*center text w.r.t nav bar*/
+    width: calc(100vw - 440px);  /*Window width - window control width - menuitem (English) width*/
+    text-align: center;
+    font-size: 11.5px;
+    z-index: 1;
+    pointer-events: none;
+  }
+    
+  head > *{ display: none }
+  head > title{
+    display: -moz-inline-box;
+    padding-top: 1px;
+    max-width: 50vw;
+    overflow-x: -moz-hidden-unscrollable;
+    text-overflow: ellipsis;
+  }
+  @media (-moz-os-version:windows-win10){
+    :root[sizemode="maximized"] > head > title { padding-top: 6.32px}
+    //:root:not([sizemode="maximized"]) > head > title { padding-top: 0px}	
+ 
+  }
+/*disabling thin nav-title-bar (title bar text in nav bar) in compact mode and when system title bar is enabled*/  
+   :root[tabsintitlebar="true"] > head > title { display: -moz-inline-box !important; }      
+   :root:not([tabsintitlebar="true"]) > head > title { display: none !important; }
+   :root[uidensity="compact"] > head > title { display: none !important;}
+}
+
+/*for hiding bookmarks bar*/
+#PersonalToolbar{
+  --uc-bm-height: 20px; /* Might need to adjust if the toolbar has other buttons */
+  --uc-bm-padding: 4px; /* Vertical padding to be applied to bookmarks */
+  --uc-autohide-toolbar-delay: 250ms; /* The toolbar is hidden after 0.6s */
+  
+  /* 0deg = "show" ; 90deg = "hide" ;  Set the following to control when bookmarks are shown */
+  --uc-autohide-toolbar-focus-rotation: 0deg; /* urlbar is focused */
+  --uc-autohide-toolbar-hover-rotation: 0deg; /* cursor is over the toolbar area */
+}
+
+:root[uidensity="compact"] #PersonalToolbar{ --uc-bm-padding: 1px }
+:root[uidensity="touch"] #PersonalToolbar{ --uc-bm-padding: 7px }
+
+#PersonalToolbar:not([customizing]){
+  position: relative;
+  margin-bottom: calc(0px - var(--uc-bm-height) - 2 * var(--uc-bm-padding));
+  transform: rotateX(90deg);
+  transform-origin: top;
+  transition: transform 135ms linear var(--uc-autohide-toolbar-delay) !important;
+  z-index: 1;
+}
+
+#PlacesToolbarItems > .bookmark-item{ padding-block: var(--uc-bm-padding) !important; }
+
+#nav-bar:focus-within + #PersonalToolbar{
+  transition-delay: 100ms !important;
+  transform: rotateX(var(--uc-autohide-toolbar-focus-rotation,0));
+}
+
+#navigator-toolbox:hover > #PersonalToolbar{
+  transition-delay: 100ms !important;
+  transform: rotateX(var(--uc-autohide-toolbar-hover-rotation,0));
+}
+
+#navigator-toolbox:hover > #nav-bar:focus-within + #PersonalToolbar {  
+  transform: rotateX(0);
+}
+
+/*hide bookmarks text and increase spacing between favicons in bkmks toolbar*/
+/*
+#personal-bookmarks .bookmark-item > .toolbarbutton-text {
+ display:none !important;
+}
+*/
+#personal-bookmarks .bookmark-item > .toolbarbutton-icon {
+margin-right: 3px !important;
+margin-left: 3px !important;
+}
+
+.private-browsing-indicator {display: none !important;}
+.accessibility-indicator    {display: none !important;}
+
+/*Megabar disbaled*/
+#urlbar[breakout][breakout-extend] {
+left: 0 !important;
+width: 100% !important;
+}
+#urlbar[breakout][breakout-extend] > #urlbar-background {
+animation-name: none !important;
+box-shadow: none !important;
+}
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+height: var(--urlbar-height) !important;
+width: 100% !important;
+padding-block: 0 !important;
+padding-inline: 0 !important;
+transition: none !important;
+}
+.urlbarView {
+margin-inline: 0 !important;
+width: 100% !important;
+}
+.urlbarView-row {
+padding-block: 0 !important;
+}
+.urlbarView-type-icon {
+min-width: 16px !important;
+height: 16px !important;
+margin-bottom: 0 !important;
+margin-inline-start: 0 !important;
+}
+.urlbarView-favicon {
+margin-inline-start: 25px !important;
+}
+
+/* During a download, force display of progress bar */
+#downloads-button[attention="success"] > .toolbarbutton-badge-stack > #downloads-indicator-progress-area 
+{
+  display: -moz-box !important;
+  visibility: visible !important;
+}
+
+#urlbar-anon-search-settings-compact.searchbar-engine-one-off-item{
+   color: yellow !important;
+}

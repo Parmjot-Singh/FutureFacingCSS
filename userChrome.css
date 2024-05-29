@@ -1,17 +1,25 @@
-@import url("chrome/autohide_bookmarks_and_main_toolbars.css");
+/*@import url("chrome/autohide_bookmarks_and_main_toolbars.css");*/
 @import url("chrome/button_effect_icon_glow.css");
 /*@import url("chrome/centered_tab_content.css")
 @import url("chrome/centered_tab_label.css")*/
 @import url("chrome/compact_proton.css");
+@import url("chrome/gapless_close_window_button.css");
+@import url("chrome/grid_overflow_menu.css");
 @import url("chrome/less_static_throbber.css");
 @import url("chrome/loading_indicator_bouncing_line.css");
 @import url("chrome/minimal_in-UI_scrollbars.css");
 @import url("chrome/minimal_text_fields.css");
-/*@import url("chrome/minimal_toolbarbuttons_v3.css");*/
-/*@import url("chrome/shrinking_pinned_tabs.css"); */
-@import url("chrome/animated_tab_colours.css");
+@import url("chrome/minimal_toolbarbuttons_v3.css");
+/*@import url("chrome/shrinking_pinned_tabs.css");
+@import url("chrome/animated_tab_colours.css");*/
+@import url("chrome/vertical_tabs.css");
 
-#PersonalToolbar{
-/*bookmarks bar color - make the bar translucent */
-	background-color: rgb(14, 14, 14, 0.5) !important;
+#sidebar-box {
+	background-color: black !important;
 }
+/* hide pinned tabs and show them in the tab overflow menu with
+browser.tabs.tabmanager = true
+in about:config 
+.tabbrowser-tab[pinned="true"] {
+display: none !important;}
+*/
